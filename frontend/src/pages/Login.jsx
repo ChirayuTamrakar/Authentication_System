@@ -7,7 +7,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const { data } = await axios.post("http://localhost:5000/api/auth/login", form);
+            const { data } = await axios.post("https://authentication-system-backend-wpt9.onrender.com/api/auth/login", form);
             localStorage.setItem("accessToken", data.accessToken);
             window.location.href = "/profile";
         } catch(err){

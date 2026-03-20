@@ -22,6 +22,17 @@ const Register = () => {
         }
     };
 
+    const handleDirectAccess = async(e) => {
+        e.preventDefault();
+        try{
+            const{ data } = await axios.post(`http://localhost:5000/api/auth/login`, { email: "dummy@gmail.com", password: "dummy@123" });
+            localStorage.setItem("accessToken", data.accessToken);
+            navigate("/profile");
+        } catch(err){
+            console.log("Error-->", err);
+        }
+    };
+
     return (
         <div className="flex items-center justify-center h-screen 
                         bg-gradient-to-br from-purple-500 to-blue-500
@@ -61,11 +72,17 @@ const Register = () => {
                     }
                 />
 
-                <button
+                <button type="submit"
                     className="w-full bg-purple-500 text-white py-2 rounded-lg
                                hover:scale-105 transition-transform"
                 >
                     Register
+                </button>
+                <button onClick={handleDirectAccess}
+                    className="w-full bg-green-500 text-white py-2 rounded-lg
+                               hover:scale-105 transition-transform"
+                >
+                    Direct Access
                 </button>
             </form>
         </div>

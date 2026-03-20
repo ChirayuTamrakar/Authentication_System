@@ -9,6 +9,7 @@ const Profile = () => {
             try {
                 const { data } = await axios.post("https://authentication-system-backend-wpt9.onrender.com/api/auth/profile");
                 setUser(data.user);
+                console.log("data---->", data, "data.user---->", data.user);
             } catch (err) {
                 console.error("Error--->", err);
             }

@@ -15,7 +15,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-        await axios.post("http://localhost:5000/api/auth/register", form);            
+        await axios.post("https://authentication-system-backend-wpt9.onrender.com/api/auth/register", form);            
         navigate("/login");
         } catch (err) {
             console.error(err);

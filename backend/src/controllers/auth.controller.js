@@ -69,6 +69,26 @@ export const refreshAccessToken = async (req, res) => {
     }
 };
 
+//Profile
+export const getProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select("-password");
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            user
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
 // LOGOUT
 export const logoutUser = async (req, res) => {
     await User.findByIdAndUpdate(req.user.id, { refreshToken: null });

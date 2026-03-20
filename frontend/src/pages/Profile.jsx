@@ -7,7 +7,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const { data } = await axios.post("http://localhost:5000/api/auth/profile");
+                const { data } = await axios.post("https://authentication-system-backend-wpt9.onrender.com/api/auth/profile");
                 setUser(data.user);
             } catch (err) {
                 console.error(err);

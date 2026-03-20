@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
     const [form, setForm] = useState({ email: "", password: "" });
@@ -9,7 +11,7 @@ const Login = () => {
         try{
             const { data } = await axios.post("https://authentication-system-backend-wpt9.onrender.com/api/auth/login", form);
             localStorage.setItem("accessToken", data.accessToken);
-            window.location.href = "/profile";
+            navigate("/profile");
         } catch(err){
             console.log("Error-->", err);
         }

@@ -3,6 +3,8 @@ import axios from "axios";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
+    const [token, setToken] = useState("");
+
 
     useEffect(() => {
         const fetchProfile = async () => {

@@ -7,6 +7,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
+                setToken(localStorage.getItem("accessToken"));
                 const { data } = await axios.get("https://authentication-system-backend-wpt9.onrender.com/api/auth/profile");
                 setUser(data.user);
                 console.log("data---->", data, "data.user---->", data.user);
@@ -37,6 +38,7 @@ const Profile = () => {
                 ) : (
                     <p>Loading...</p>
                 )}
+                <h5 className="h-[170px] w-[370px] overflow-hidden "> Your Current Token: {token}</h5>
             </div>
         </div>
     );

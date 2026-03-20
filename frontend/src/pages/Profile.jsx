@@ -11,8 +11,7 @@ const Profile = () => {
             try {
                 setToken(localStorage.getItem("accessToken"));
                 const { data } = await axios.get("https://authentication-system-backend-wpt9.onrender.com/api/auth/profile");
-                setUser(data.user);
-                console.log("data---->", data, "data.user---->", data.user);
+                setUser(data);
             } catch (err) {
                 console.error("Error--->", err);
             }
@@ -34,7 +33,7 @@ const Profile = () => {
                     <>
                         <p className="text-lg">Email: {user.email}</p>
                         <p className="text-gray-500 text-sm">
-                            User ID: {user.id}
+                            User ID: {user}
                         </p>
                     </>
                 ) : (
